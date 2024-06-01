@@ -1,4 +1,4 @@
 # Community-Mind
 
 
-Da ich sonst keine elegante Lösung gefunden habe, erkenntliche Screenshots der Topcis zu machen (Man hätte ca. 4 Screenshots pro Topic gebraucht), verlinke ich den Sourcecode der Topics hier auf Github.
+Da ich keine elegante Lösung gefunden habe, um angemessene Screenshots der Topics zu erstellen (es wären etwa vier Screenshots pro Topic erforderlich gewesen), verlinke ich hier den Sourcecode der Topics auf GitHub.
