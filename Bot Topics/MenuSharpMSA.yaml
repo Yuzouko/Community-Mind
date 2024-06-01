@@ -1,0 +1,54 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/sharp msa"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_QuF5FJ
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: Protokoll C
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eefjqj2M6-JFnGIWpdcmB-kBYUQqJ939gqgcS714hKtTwg?e=KsEZJu
+
+              - kind: OpenUrl
+                title: Protokoll SW
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZZL4lYw_O5JuR6H_8Jz-3QBA3HvrGQns7qNEboi_ISbJA?e=XjOtNc
+
+              - kind: OpenUrl
+                title: Firmware
+                url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware&viewpath=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FForms%2FAllItems%2Easpx&id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FSharp&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+    - kind: Question
+      id: question_fyFbwz
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_RglYAe
+      conditions:
+        - id: conditionItem_CTcOkT
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuSharpMSA.main.question_fyFbwz'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: phxQuM
+          actionId: question_fyFbwz
+
+    - kind: BeginDialog
+      id: tSzDni
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

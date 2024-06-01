@@ -1,0 +1,360 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_bPonjz
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Für welchen Hersteller benötigst du ein Datenlöschprotokoll?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Kyocera
+              displayName: Kyocera
+
+            - id: Sharp
+              displayName: Sharp
+
+            - id: Lexmark
+              displayName: Lexmark
+
+            - id: Epson
+              displayName: Epson
+
+            - id: Konica
+              displayName: Konica
+
+            - id: Canon
+              displayName: Canon
+
+            - id: HP
+              displayName: HP
+
+            - id: Panasonic
+              displayName: Panasonic
+
+            - id: Samsung
+              displayName: Samsung
+
+            - id: Sonstige Hersteller
+              displayName: Sonstige Hersteller
+
+    - kind: ConditionGroup
+      id: conditionGroup_bvfo5F
+      conditions:
+        - id: conditionItem_eX4Vu7
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Kyocera
+          actions:
+            - kind: Question
+              id: question_KlLRUg
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var2
+              prompt: "Art des Gerätes:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: TA
+                      displayName: TA
+
+                    - id: MFP
+                      displayName: MFP
+
+                    - id: Drucker
+                      displayName: Drucker
+
+            - kind: ConditionGroup
+              id: conditionGroup_AjlQlo
+              conditions:
+                - id: conditionItem_8kh3ua
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Datenlschung.main.question_KlLRUg'.TA
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_Q8cOfs
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EWO_5413Eb1Bg8X04Fbc2DwB5o9NqCE0Ecjlrwq8ITyv3Q?e=bmSm3C
+
+                - id: conditionItem_xytDbN
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Datenlschung.main.question_KlLRUg'.MFP
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_teAdWZ
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXJj2CP1R5lNj-lUNiJz_1QB8k3p2KROHfxApSRH3j0Hjw?e=bpdaT2
+
+                - id: conditionItem_uwKAKo
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Datenlschung.main.question_KlLRUg'.Drucker
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_nytR8B
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eb12VksfDNtChatUQZCYg_wBQXvR66GCohcpVobWflypMg?e=K4w12b
+
+              elseActions:
+                - kind: GotoAction
+                  id: QdCBPV
+                  actionId: question_KlLRUg
+
+        - id: conditionItem_rxk2aM
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Sharp
+          actions:
+            - kind: Question
+              id: question_Zg6Zrt
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var3
+              prompt: "Art des Geräts:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Neu
+                      displayName: Neu
+
+                    - id: Alt
+                      displayName: Alt
+
+            - kind: ConditionGroup
+              id: conditionGroup_eAvP8I
+              conditions:
+                - id: conditionItem_nDVucS
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Datenlschung.main.question_Zg6Zrt'.Neu
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_LV2nkK
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Ed4intKhCvBNqKgft0udkoQBn9nvrGhxgF47qRy-OKSS6w?e=TXyrja
+
+                - id: conditionItem_bBgkAm
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Datenlschung.main.question_Zg6Zrt'.Alt
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_Jhhpbm
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EfBa0hl2ISJFooj73PlxS6cBjBcuf38XLbos2jA5sTSc0w?e=9I6tp4
+
+              elseActions:
+                - kind: GotoAction
+                  id: tdhYQW
+                  actionId: question_Zg6Zrt
+
+        - id: conditionItem_nTxRM3
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Lexmark
+          actions:
+            - kind: Question
+              id: question_x9VOAt
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var4
+              prompt: "Art des Geräts:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Android
+                      displayName: Android
+
+                    - id: Standart
+                      displayName: Standart
+
+            - kind: ConditionGroup
+              id: conditionGroup_Xw8N0j
+              conditions:
+                - id: conditionItem_jG9NXe
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.Datenlschung.main.question_x9VOAt'.Android
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_LV20ec
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXyfB730_ghHlVub1TW46XwBx9TUsu5na3o7hpubZ6ytbw?e=plhbI7
+
+                - id: conditionItem_uZIJaB
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.Datenlschung.main.question_x9VOAt'.Standart
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_lV28yR
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaiAlOANiAlKkXvLZ2NKh_4BDVKkIoLVhBKvtGrPgmANdA?e=FDgE0B
+
+              elseActions:
+                - kind: GotoAction
+                  id: 77HRkK
+                  actionId: question_x9VOAt
+
+        - id: conditionItem_FEEf3e
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Epson
+          actions:
+            - kind: SendActivity
+              id: sendActivity_rJF7cD
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ETZLqr1Zp0tBoqBb_tkGligB87thKiVrO4WOrXSGNae7WQ?e=CL4red
+
+        - id: conditionItem_NaMWk4
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Konica
+          actions:
+            - kind: SendActivity
+              id: sendActivity_228Fu9
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: MakeCall
+                        title: Hier klicken
+                        phoneNumber: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EdnBOyU535xIq9s9zLgrutcBOqNWG7Q-r4wjfxlhukyEQg?e=cJynGt
+
+        - id: conditionItem_o7Y37o
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Canon
+          actions:
+            - kind: SendActivity
+              id: sendActivity_2agkOg
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ESBWGQ1wHyZJp6BF0OluuC4BTDJrvfapQhbU5bkZlpJGbw?e=txUZGA
+
+        - id: conditionItem_AcDaOs
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.HP
+          actions:
+            - kind: SendActivity
+              id: sendActivity_BIezAL
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EbgTXwP8AcJKvEdn42M_lukB0gSLSWujooixXaefurUFfQ?e=a1XGfZ
+
+        - id: conditionItem_Q3cD3G
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Panasonic
+          actions:
+            - kind: SendActivity
+              id: sendActivity_2wssMU
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EV1tDqkJ4I1Mirngdz1XGfsBDdVAWPZXRvWdDPvaEB8s0w?e=9HeQRt
+
+        - id: conditionItem_xYElZ4
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.Samsung
+          actions:
+            - kind: SendActivity
+              id: sendActivity_lZ66Od
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EfrJ8f7P3o1EqBDTTHzZiWUB4s8y9ERMk4ukqGczvHWAKw?e=OODkfT
+
+        - id: conditionItem_BHcxJD
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Datenlschung.main.question_bPonjz'.'Sonstige Hersteller'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_0UkSsj
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EYEx1FKuqstAte4idHLKijcBbZi8J2kwHMLmKvT7EGga6Q?e=gaMFGN
+
+      elseActions:
+        - kind: GotoAction
+          id: 2I9NP6
+          actionId: question_bPonjz
+
+    - kind: SendActivity
+      id: sendActivity_eBtAtV
+      activity: Vielen Dank!
+
+    - kind: Question
+      id: question_dNPoY4
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var5
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_zett26
+      conditions:
+        - id: conditionItem_fiu545
+          condition: =Topic.Var5 = 'cr3ef_communityMind.topic.Datenlschung.main.question_dNPoY4'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: Tvuunq
+          actionId: question_dNPoY4
+
+    - kind: BeginDialog
+      id: M1gM6t
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

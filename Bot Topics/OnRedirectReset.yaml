@@ -1,0 +1,17 @@
+kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_OPsT1O
+      activity: Community Mind wurde zurückgesetzt.
+
+    - kind: ClearAllVariables
+      id: clearAllVariables_73bTFR
+      variables: ConversationScopedVariables
+
+    - kind: BeginDialog
+      id: RdmOii
+      dialog: cr3ef_communityMind.topic.ConversationStart

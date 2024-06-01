@@ -1,0 +1,17 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/help" || System.LastMessage.Text = "/h" || System.LastMessage.Text = "/hilfe"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_LPnMin
+      activity: |-
+        **Bot Befehle:**
+        
+        1. Bot **zurücksetzen:**
+        _"/r", "/reset", "/zurücksetzen"_
+        2. Shortcuts **anzeigen:**
+        _"/s", "/short", "/shortcut"_
+        3. Hilfe **öffnen:                                                        "**_/h", "/help", "/hilfe"_

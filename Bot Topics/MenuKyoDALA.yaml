@@ -1,0 +1,54 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/kyo dala"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_5JQdh8
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: TA Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EWO_5413Eb1Bg8X04Fbc2DwB5o9NqCE0Ecjlrwq8ITyv3Q?e=Mt8Bwj
+
+              - kind: OpenUrl
+                title: MFP Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXJj2CP1R5lNj-lUNiJz_1QB8k3p2KROHfxApSRH3j0Hjw?e=j49cbl
+
+              - kind: OpenUrl
+                title: Drucker Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eb12VksfDNtChatUQZCYg_wBQXvR66GCohcpVobWflypMg?e=lsI2yR
+
+    - kind: Question
+      id: question_ftF7dk
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_3y7T3F
+      conditions:
+        - id: conditionItem_8uD2kx
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuKyoDALA.main.question_ftF7dk'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: gBZNJP
+          actionId: question_ftF7dk
+
+    - kind: BeginDialog
+      id: XQWndo
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

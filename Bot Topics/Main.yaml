@@ -1,0 +1,195 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_M0LuhV
+      activity:
+        text:
+          - Guten Tag {System.User.FirstName}, ich bin der Chatbot {System.Bot.Name} . Mit meiner Hilfe kannst du leicht Dokumente abrufen welche für den normalen Betrieb im Configuration Service benötigt werden. Wenn du eine Liste aller Befehle benötigst, tippe **_"/help"_**.
+        speak:
+          - Danke für den Anruf. Wie kann ich helfen?
+
+    - kind: OAuthInput
+      id: 9K62R4
+      title: Anmeldung
+      text: Du musst angemeldet sein um Community Mind verwenden zu können.
+
+    - kind: Question
+      id: question_qzHyRQ
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Möchtest du irgendwelche Shortcuts verwenden?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Nein
+              displayName: Nein
+
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_8kRnQD
+      conditions:
+        - id: conditionItem_CEgLua
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.ConversationStart.main.question_qzHyRQ'.Nein
+          actions:
+            - kind: Question
+              id: question_7QT3qq
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var2
+              prompt: Was möchtest du tun?
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Dateien aufrufen
+                      displayName: Dateien aufrufen
+
+            - kind: ConditionGroup
+              id: conditionGroup_7IppNV
+              conditions:
+                - id: conditionItem_8baIzQ
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.ConversationStart.main.question_7QT3qq'.'Dateien aufrufen'
+                  actions:
+                    - kind: Question
+                      id: question_iWvtIV
+                      interruptionPolicy:
+                        allowInterruption: true
+
+                      variable: init:Topic.Var3
+                      prompt: Für welchen Bereich?
+                      entity:
+                        kind: EmbeddedEntity
+                        definition:
+                          kind: ClosedListEntity
+                          items:
+                            - id: Neucheck
+                              displayName: Neucheck
+
+                            - id: Datenlöschung
+                              displayName: Datenlöschung
+
+                            - id: Instandsetzung
+                              displayName: Instandsetzung
+
+                            - id: Großkunden Konfig
+                              displayName: Großkunden Konfig
+
+                            - id: Firmware
+                              displayName: Firmware
+
+                            - id: Tricks
+                              displayName: Tricks
+
+                    - kind: ConditionGroup
+                      id: conditionGroup_ZL9qbI
+                      conditions:
+                        - id: conditionItem_gP00Sk
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.Neucheck
+                          actions:
+                            - kind: BeginDialog
+                              id: OadzE3
+                              dialog: cr3ef_communityMind.topic.Neucheck
+
+                        - id: conditionItem_ylaAk6
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.Datenlöschung
+                          actions:
+                            - kind: BeginDialog
+                              id: wwoq15
+                              dialog: cr3ef_communityMind.topic.Datenlschung
+
+                        - id: conditionItem_cggnrl
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.Instandsetzung
+                          actions:
+                            - kind: BeginDialog
+                              id: HSVzbn
+                              dialog: cr3ef_communityMind.topic.Instandsetzung
+
+                        - id: conditionItem_KjI5uJ
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.'Großkunden Konfig'
+                          actions:
+                            - kind: BeginDialog
+                              id: 8PAJFw
+                              dialog: cr3ef_communityMind.topic.GrokundenKonfig
+
+                        - id: conditionItem_uDQuxg
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.Firmware
+                          actions:
+                            - kind: BeginDialog
+                              id: xy66Op
+                              dialog: cr3ef_communityMind.topic.Firmware
+
+                        - id: conditionItem_7sI8mj
+                          condition: =Topic.Var3 = 'cr3ef_communityMind.topic.ConversationStart.main.question_iWvtIV'.Tricks
+                          actions:
+                            - kind: BeginDialog
+                              id: SiiLWE
+                              dialog: cr3ef_communityMind.topic.Tricks
+
+                      elseActions:
+                        - kind: GotoAction
+                          id: agCjHL
+                          actionId: question_iWvtIV
+
+              elseActions:
+                - kind: GotoAction
+                  id: sZVQLW
+                  actionId: question_7QT3qq
+
+        - id: conditionItem_1tQ3lM
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.ConversationStart.main.question_qzHyRQ'.Ja
+          actions:
+            - kind: Question
+              id: question_pLLqto
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var4
+              prompt: Willst du das Shortcut Verzeichnis angezeigt bekommen?
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Ja
+                      displayName: Ja
+
+                    - id: Nein
+                      displayName: Nein
+
+            - kind: ConditionGroup
+              id: conditionGroup_WRxyRl
+              conditions:
+                - id: conditionItem_Qj9r61
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.ConversationStart.main.question_pLLqto'.Ja
+                  actions:
+                    - kind: BeginDialog
+                      id: 50Bg7U
+                      dialog: cr3ef_communityMind.topic.IndexShortcut
+
+                - id: conditionItem_kyH9oR
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.ConversationStart.main.question_pLLqto'.Nein
+                  actions:
+                    - kind: BeginDialog
+                      id: bPKxfV
+                      dialog: cr3ef_communityMind.topic.OnRedirectShortcut
+
+              elseActions:
+                - kind: GotoAction
+                  id: rj8IB5
+                  actionId: question_pLLqto
+
+      elseActions:
+        - kind: GotoAction
+          id: ldyCSq
+          actionId: question_qzHyRQ

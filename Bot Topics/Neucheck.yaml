@@ -1,0 +1,322 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_3AbZ4F
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Für welchen Hersteller benötigst du ein Dokument?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Kyocera
+              displayName: Kyocera
+
+            - id: Sharp
+              displayName: Sharp
+
+            - id: Lexmark
+              displayName: Lexmark
+
+            - id: Epson
+              displayName: Epson
+
+            - id: Brother
+              displayName: Brother
+
+    - kind: ConditionGroup
+      id: conditionGroup_ARGqkF
+      conditions:
+        - id: conditionItem_DPkBye
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Neucheck.main.question_3AbZ4F'.Kyocera
+          actions:
+            - kind: Question
+              id: question_mGb4Mc
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var3
+              prompt: "Art von Gerät:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Drucker
+                      displayName: Drucker
+
+                    - id: MFP
+                      displayName: MFP
+
+                    - id: TA
+                      displayName: TA
+
+            - kind: ConditionGroup
+              id: conditionGroup_iHvN0Q
+              conditions:
+                - id: conditionItem_fhfVml
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Neucheck.main.question_mGb4Mc'.Drucker
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_qlkM7q
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXW3MWaSwlhMmMjwgExPEx0BL1zer8Q6Vn2JgAgsBfDrCQ?e=Jlgrx1
+
+                - id: conditionItem_fkn4KA
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Neucheck.main.question_mGb4Mc'.MFP
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_BN1qPw
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EWwSTmQwRaNPot6AInF21eMBOJ_gqZD9lHNx9a3HiFseHQ?e=FF4tEC
+
+                - id: conditionItem_sRhqRv
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Neucheck.main.question_mGb4Mc'.TA
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_L83IrB
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EdNK1exhxhdJjOCZfnPtaRcBARq2Jufhq4L3fq8Fx8CuOw?e=Aqo8V6
+
+              elseActions:
+                - kind: GotoAction
+                  id: 5Yv8xp
+                  actionId: question_mGb4Mc
+
+        - id: conditionItem_6ZUdvn
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Neucheck.main.question_3AbZ4F'.Sharp
+          actions:
+            - kind: Question
+              id: question_zj3pLW
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var4
+              prompt: "Art von Gerät:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: Farbe
+                      displayName: Farbe
+
+                    - id: SW
+                      displayName: SW
+
+            - kind: ConditionGroup
+              id: conditionGroup_L1wGr5
+              conditions:
+                - id: conditionItem_875bng
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.Neucheck.main.question_zj3pLW'.Farbe
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_uY0ixJ
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eefjqj2M6-JFnGIWpdcmB-kBYUQqJ939gqgcS714hKtTwg?e=8gAfdr
+
+                - id: conditionItem_ZU3lJj
+                  condition: =Topic.Var4 = 'cr3ef_communityMind.topic.Neucheck.main.question_zj3pLW'.SW
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_4G8f8D
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZZL4lYw_O5JuR6H_8Jz-3QBA3HvrGQns7qNEboi_ISbJA?e=Krxjjf
+
+              elseActions:
+                - kind: GotoAction
+                  id: bCoWXo
+                  actionId: question_zj3pLW
+
+        - id: conditionItem_BBsuqz
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Neucheck.main.question_3AbZ4F'.Lexmark
+          actions:
+            - kind: Question
+              id: question_cju3NV
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var5
+              prompt: "Art von Gerät:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: MFP
+                      displayName: MFP
+
+                    - id: Drucker
+                      displayName: Drucker
+
+            - kind: ConditionGroup
+              id: conditionGroup_DwWveU
+              conditions:
+                - id: conditionItem_DK2Z2d
+                  condition: =Topic.Var5 = 'cr3ef_communityMind.topic.Neucheck.main.question_cju3NV'.MFP
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_h1uMuJ
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaB0PfV7O5FHsCfOVmNK3R4B_HHt7HxgZrRH5mcASZyN6w?e=ahpzAS
+
+                - id: conditionItem_6QEKsK
+                  condition: =Topic.Var5 = 'cr3ef_communityMind.topic.Neucheck.main.question_cju3NV'.Drucker
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_QOKZR2
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ETv-99b3twdPluRyuRkGCNABtuxL7jc43pH2bmtHF8v1Mw?e=OCOReP
+
+              elseActions:
+                - kind: GotoAction
+                  id: PZdH7U
+                  actionId: question_cju3NV
+
+        - id: conditionItem_Ovb6uh
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Neucheck.main.question_3AbZ4F'.Epson
+          actions:
+            - kind: Question
+              id: question_F6J6eL
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var6
+              prompt: "Art des Geräts:"
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: A4
+                      displayName: A4
+
+                    - id: A3
+                      displayName: A3
+
+            - kind: ConditionGroup
+              id: conditionGroup_PEuyfq
+              conditions:
+                - id: conditionItem_G3icR8
+                  condition: =Topic.Var6 = 'cr3ef_communityMind.topic.Neucheck.main.question_F6J6eL'.A4
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_dqL32a
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ESYWGEXHsA1BvhMWjHbz_wUBe2013UkBOt4Z1WMRST4Mtw?e=HvEpTm
+
+                - id: conditionItem_2U1Ep6
+                  condition: =Topic.Var6 = 'cr3ef_communityMind.topic.Neucheck.main.question_F6J6eL'.A3
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_qv70Xb
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ESpezJ2hycxMunX2ilqnZrEBRNXlEyGv5O5WqSK4TfxYGw?e=dbapQ0
+
+              elseActions:
+                - kind: GotoAction
+                  id: UiT3w3
+                  actionId: question_F6J6eL
+
+        - id: conditionItem_Ws3KB6
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Neucheck.main.question_3AbZ4F'.Brother
+          actions:
+            - kind: SendActivity
+              id: sendActivity_7fNUbC
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXTg2Ub2AWFPgpqXBjqVGFYBcUCZ2BepSHxFQqG5ObXDgQ?e=CcAt2d
+
+      elseActions:
+        - kind: GotoAction
+          id: dFnp0D
+          actionId: question_3AbZ4F
+
+    - kind: SendActivity
+      id: sendActivity_4RQikE
+      activity: Vielen Dank!
+
+    - kind: Question
+      id: question_tyZa13
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var2
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_9kc4od
+      conditions:
+        - id: conditionItem_eRHbxI
+          condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Neucheck.main.question_tyZa13'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: VvKjfM
+          actionId: question_tyZa13
+
+    - kind: BeginDialog
+      id: Zr6QLu
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

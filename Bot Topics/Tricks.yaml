@@ -1,0 +1,94 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_2CcprA
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Für welchen Hersteller möchtest du Tricks sehen?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Sharp
+              displayName: Sharp
+
+            - id: Lexmark
+              displayName: Lexmark
+
+    - kind: ConditionGroup
+      id: conditionGroup_hKZaie
+      conditions:
+        - id: conditionItem_W87HB3
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Tricks.main.question_2CcprA'.Sharp
+          actions:
+            - kind: SendActivity
+              id: sendActivity_DklCrw
+              activity:
+                text:
+                  - "Hier gehts du den Tricks für Sharp:"
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Sharp Tricks
+                        url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Tricks/Forms/AllItems.aspx?id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FTricks%2FSharp&viewid=75f3de43%2D2547%2D42a9%2Db37d%2Db77e35c37c56
+
+        - id: conditionItem_S0zhr5
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Tricks.main.question_2CcprA'.Lexmark
+          actions:
+            - kind: SendActivity
+              id: sendActivity_lZjaWD
+              activity:
+                text:
+                  - "Hier gehts du den Tricks für Lexmark:"
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Lexmark Tricks
+                        url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Tricks/Forms/AllItems.aspx?id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FTricks%2FLexmark&viewid=75f3de43%2D2547%2D42a9%2Db37d%2Db77e35c37c56
+
+      elseActions:
+        - kind: GotoAction
+          id: eG0yPo
+          actionId: question_2CcprA
+
+    - kind: SendActivity
+      id: sendActivity_ZCLx7O
+      activity: Vielen Dank!
+
+    - kind: Question
+      id: question_9AFpcv
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var2
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_VHYuEg
+      conditions:
+        - id: conditionItem_naNhe7
+          condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Tricks.main.question_9AFpcv'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: Cjq6n1
+          actionId: question_9AFpcv
+
+    - kind: BeginDialog
+      id: BlRKhn
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

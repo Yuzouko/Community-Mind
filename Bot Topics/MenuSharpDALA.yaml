@@ -1,0 +1,46 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/sharp dala"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_VP1BI5
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Ed4intKhCvBNqKgft0udkoQBn9nvrGhxgF47qRy-OKSS6w?e=lRNppy
+
+    - kind: Question
+      id: question_RPIjr8
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_CSoxeT
+      conditions:
+        - id: conditionItem_bpkZsL
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuSharpDALA.main.question_RPIjr8'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: QvEAjb
+          actionId: question_RPIjr8
+
+    - kind: BeginDialog
+      id: 0taUEX
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

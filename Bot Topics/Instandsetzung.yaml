@@ -1,0 +1,350 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_G3PikY
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Für welchen Hersteller benötigst du ein Instandsetzungprotokoll?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Kyocera
+              displayName: Kyocera
+
+            - id: Sharp
+              displayName: Sharp
+
+            - id: Lexmark
+              displayName: Lexmark
+
+    - kind: ConditionGroup
+      id: conditionGroup_Ax7slV
+      conditions:
+        - id: conditionItem_Sia2Y6
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_G3PikY'.Kyocera
+          actions:
+            - kind: Question
+              id: question_erCjPa
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var3
+              prompt: Welche Art von Gerät?
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: TA Farbe
+                      displayName: TA Farbe
+
+                    - id: TA SW
+                      displayName: TA SW
+
+                    - id: MFP Farbe
+                      displayName: MFP Farbe
+
+                    - id: MFP SW
+                      displayName: MFP SW
+
+                    - id: Drucker Farbe
+                      displayName: Drucker Farbe
+
+                    - id: Drucker SW
+                      displayName: Drucker SW
+
+            - kind: ConditionGroup
+              id: conditionGroup_PccX25
+              conditions:
+                - id: conditionItem_CmVWXH
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'TA Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_7qWFjP
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EfA3js2OTcRGgSbfpu4E73sBja2_epkpJnpaoIa2uco51Q?e=x3xx9w
+
+                - id: conditionItem_Zctjq6
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'TA SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_ELcbtQ
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EWN1iiuWfKlFsjF4_tdHCyIBpGnUqGG_1iMtOCTDKFLfHA?e=iO7iPH
+
+                - id: conditionItem_2aa9Zn
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'MFP Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_ZFWrMg
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eak5vHh5f9hEs9vgUfPKvRIBqVKRob7xW_A1hUtFMWMqlA?e=ghbvod
+
+                - id: conditionItem_9sGoYX
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'MFP SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_Y5VuzC
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EcsURJ5yETZInJMivBw_5nwB6tnv9NYXllFeIVFQ74hAjQ?e=ODYM5j
+
+                - id: conditionItem_MCf8v9
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'Drucker Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_WiOLzO
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZhsDrogBbpJpspliUXqT_wBJe5egZyV-0ZV-lc2vxt8sg?e=Yw5Ejs
+
+                - id: conditionItem_rmbdaX
+                  condition: =Topic.Var3 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_erCjPa'.'Drucker SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_jHh8sd
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EebSZmub7IVHnlcuC2yBooUBYWk1xYQrghtU9i6X36mcjA?e=sh1Gy3
+
+              elseActions:
+                - kind: GotoAction
+                  id: PUisW2
+                  actionId: question_erCjPa
+
+        - id: conditionItem_JhRk04
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_G3PikY'.Sharp
+          actions:
+            - kind: SendActivity
+              id: sendActivity_Jwfq3b
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Hier klicken
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EUcEIaeR4ipOnhu0RTBNAuoB7Rmk-1TGRXikAdZeCv_CIg?e=dETZW9
+
+        - id: conditionItem_OPT5R1
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_G3PikY'.Lexmark
+          actions:
+            - kind: Question
+              id: question_RQDGGI
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.Var2
+              prompt: Welche Art von Gerät?
+              entity:
+                kind: EmbeddedEntity
+                definition:
+                  kind: ClosedListEntity
+                  items:
+                    - id: MFP Android Farbe
+                      displayName: MFP Android Farbe
+
+                    - id: MFP Android SW
+                      displayName: MFP Android SW
+
+                    - id: Drucker Android Farbe
+                      displayName: Drucker Android Farbe
+
+                    - id: Android Drucker SW
+                      displayName: Android Drucker SW
+
+                    - id: MFP Farbe
+                      displayName: MFP Farbe
+
+                    - id: MF SW
+                      displayName: MFP SW
+
+                    - id: Drucker Farbe
+                      displayName: Drucker Farbe
+
+                    - id: Drucker SW
+                      displayName: Drucker SW
+
+            - kind: ConditionGroup
+              id: conditionGroup_wfbuGK
+              conditions:
+                - id: conditionItem_EY0QOl
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'MFP Android Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_dC6isb
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EVrZJPJ_jmJEj1LGxmOlR34BYAWhqZzZD-zYGneYTpvKag?e=fVJ7GU
+
+                - id: conditionItem_6DgNUi
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'MFP Android SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_LYUsZg
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZVUJmjoJ1FIr-okpRaUMSkByxDZcNvvMPpsqVabI8-Zrw?e=mc2d0r
+
+                - id: conditionItem_WEX0Ax
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'Drucker Android Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_s8I4PD
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ESYwe0kezmtOlhfxuUoP_e4Bwr03WBioa3cplxjWtQXlpQ?e=pfhopT
+
+                - id: conditionItem_K2C9zn
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'Android Drucker SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_Nj7zRC
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EbhKzseXoXVLtmva6UZYEVMBs3wrJvakj3_htafTqaGKQw?e=eYWsME
+
+                - id: conditionItem_4ewAJ2
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'MFP Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_2JiFX5
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ERmC7bMgeKdEqf3vohHQZscBWbwvbeWc_ry0_FBtsdS8Sg?e=GmJcD0
+
+                - id: conditionItem_0mEcej
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'MF SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_qVV0g5
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EQBg3uzA__5GqZcJxap7ovoBfpeaE6Ey0NAIrduzDVGnyQ?e=7MQzNC
+
+                - id: conditionItem_Bgyzvu
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'Drucker Farbe'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_AZt5D2
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ERu2eyYpUCVHlXFn1TgOk3YBKBrmjlrV2t-MtMCyOA-Glg?e=db0blT
+
+                - id: conditionItem_5Zl84Z
+                  condition: =Topic.Var2 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_RQDGGI'.'Drucker SW'
+                  actions:
+                    - kind: SendActivity
+                      id: sendActivity_dLiyrk
+                      activity:
+                        attachments:
+                          - kind: HeroCardTemplate
+                            buttons:
+                              - kind: OpenUrl
+                                title: Hier klicken
+                                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EX4NCihXOkVCm6aM0N7pW8cBNgg54A45CoLZOlGhGIuDVg?e=BekaK2
+
+              elseActions:
+                - kind: GotoAction
+                  id: 334d8k
+                  actionId: question_RQDGGI
+
+      elseActions:
+        - kind: GotoAction
+          id: ohbGRX
+          actionId: question_G3PikY
+
+    - kind: SendActivity
+      id: sendActivity_sRzHNh
+      activity: Vielen Dank!
+
+    - kind: Question
+      id: question_rdvGCx
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var4
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_TqQDmK
+      conditions:
+        - id: conditionItem_AeDH7s
+          condition: =Topic.Var4 = 'cr3ef_communityMind.topic.Instandsetzung.main.question_rdvGCx'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: 17i13g
+          actionId: question_rdvGCx
+
+    - kind: BeginDialog
+      id: Cc4W6E
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

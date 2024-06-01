@@ -1,0 +1,234 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_qU0bY4
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: "Shortcut Verzeichnis:"
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Kyo Neucheck
+              displayName: Kyo Neucheck
+
+            - id: Sharp Neucheck
+              displayName: Sharp Neucheck
+
+            - id: Lexmark Neucheck
+              displayName: Lexmark Neucheck
+
+            - id: Lexmark Datenlöschung
+              displayName: Lexmark Datenlöschung
+
+            - id: Kyo Datenlöschung
+              displayName: Kyo Datenlöschung
+
+            - id: Sharp Datenlöschung
+              displayName: Sharp Datenlöschung
+
+            - id: Vetter Sharp
+              displayName: Vetter Sharp
+
+            - id: Vetter Lexmark
+              displayName: Vetter Lexmark
+
+    - kind: ConditionGroup
+      id: conditionGroup_NCYsh2
+      conditions:
+        - id: conditionItem_lDoN8w
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Kyo Neucheck'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_Ex36I6
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EdNK1exhxhdJjOCZfnPtaRcBARq2Jufhq4L3fq8Fx8CuOw?e=Aqo8V6
+
+                      - kind: OpenUrl
+                        title: Firmware
+                        url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FKyocera&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+        - id: conditionItem_6YcHky
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Sharp Neucheck'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_EptSNc
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll C
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eefjqj2M6-JFnGIWpdcmB-kBYUQqJ939gqgcS714hKtTwg?e=n7NHZi
+
+                      - kind: OpenUrl
+                        title: Protokoll SW
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZZL4lYw_O5JuR6H_8Jz-3QBA3HvrGQns7qNEboi_ISbJA?e=LBkIXa
+
+                      - kind: OpenUrl
+                        title: Firmware
+                        url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FSharp&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+        - id: conditionItem_0xKice
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Lexmark Neucheck'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_28Sd2R
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll MFP
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaB0PfV7O5FHsCfOVmNK3R4B_HHt7HxgZrRH5mcASZyN6w?e=qYc5iR
+
+                      - kind: OpenUrl
+                        title: Protokoll Drucker
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ETv-99b3twdPluRyuRkGCNABtuxL7jc43pH2bmtHF8v1Mw?e=V0OfSD
+
+        - id: conditionItem_JoRlzT
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Lexmark Datenlöschung'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_FZKb9x
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll Android
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXyfB730_ghHlVub1TW46XwBx9TUsu5na3o7hpubZ6ytbw?e=ffRUyP
+
+                      - kind: OpenUrl
+                        title: Protokoll Normal
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaiAlOANiAlKkXvLZ2NKh_4BDVKkIoLVhBKvtGrPgmANdA?e=HAme38
+
+        - id: conditionItem_RDOs11
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Kyo Datenlöschung'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_gyadMU
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: TA Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EWO_5413Eb1Bg8X04Fbc2DwB5o9NqCE0Ecjlrwq8ITyv3Q?e=8O6xc3
+
+                      - kind: OpenUrl
+                        title: MFP Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXJj2CP1R5lNj-lUNiJz_1QB8k3p2KROHfxApSRH3j0Hjw?e=WxY2qo
+
+                      - kind: OpenUrl
+                        title: Drucker Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eb12VksfDNtChatUQZCYg_wBQXvR66GCohcpVobWflypMg?e=c1lG02
+
+        - id: conditionItem_bUMRYY
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Sharp Datenlöschung'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_RatC0w
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Ed4intKhCvBNqKgft0udkoQBn9nvrGhxgF47qRy-OKSS6w?e=izjrTn
+
+        - id: conditionItem_HWuwxU
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Vetter Sharp'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_j0QTAH
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Protokoll C
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/Eefjqj2M6-JFnGIWpdcmB-kBYUQqJ939gqgcS714hKtTwg?e=n7NHZi
+
+                      - kind: OpenUrl
+                        title: Protokoll SW
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EZZL4lYw_O5JuR6H_8Jz-3QBA3HvrGQns7qNEboi_ISbJA?e=LBkIXa
+
+                      - kind: OpenUrl
+                        title: Protokoll Vetter
+                        url: https://morgensternag.sharepoint.com/:x:/s/bot_doc_library/Ee50nks29HNFnXLY-dGOJFsBjzbP7DrndrCzUqiakgKIMQ?e=6QVljY
+
+                      - kind: OpenUrl
+                        title: Firmware
+                        url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FSharp&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+        - id: conditionItem_4wjmSV
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_qU0bY4'.'Vetter Lexmark'
+          actions:
+            - kind: SendActivity
+              id: sendActivity_UQ9b94
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: MFP Protokoll
+                        url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaB0PfV7O5FHsCfOVmNK3R4B_HHt7HxgZrRH5mcASZyN6w?e=qYc5iR
+
+                      - kind: OpenUrl
+                        title: Drucker Protokoll
+                        url: " https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ETv-99b3twdPluRyuRkGCNABtuxL7jc43pH2bmtHF8v1Mw?e=V0OfSD"
+
+                      - kind: OpenUrl
+                        title: Vetter Protokoll
+                        url: https://morgensternag.sharepoint.com/:x:/s/bot_doc_library/EeS-hbIz1UNBsXnP8cZmDL4BgWXL_jx6G52cii2j4uYLRw?e=EsPPfI
+
+      elseActions:
+        - kind: GotoAction
+          id: 1OcmzT
+          actionId: question_qU0bY4
+
+    - kind: SendActivity
+      id: sendActivity_rLDORX
+      activity: Vielen Dank!
+
+    - kind: Question
+      id: question_oIQbNj
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var2
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_zFOnnH
+      conditions:
+        - id: conditionItem_x4xu9I
+          condition: =Topic.Var2 = 'cr3ef_communityMind.topic.IndexShortcut.main.question_oIQbNj'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: DTDMDN
+          actionId: question_oIQbNj
+
+    - kind: BeginDialog
+      id: el9XdV
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

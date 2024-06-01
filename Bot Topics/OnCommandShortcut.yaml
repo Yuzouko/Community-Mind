@@ -1,0 +1,27 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/s" || System.LastMessage.Text = "/short" || System.LastMessage.Text = "/shortcut"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_NqsYGC
+      activity: |-
+        **Hier werden die Shortcut Befehle gelistet:**
+        - **Kyo Neucheck:**
+        "_/kyo msa"_
+        - **Sharp Neucheck:**
+        "_/sharp msa"_
+        - **Lexmark Neucheck:**
+        "_/lex msa"_
+        - **Lexmark Datenlöschung:**
+        "_/lex dala"_
+        - **Kyo Datenlöschung:**
+        "_/kyo dala"_
+        - **Sharp Datenlöschung:**
+        "_/sharp dala"_
+        - **Vetter Sharp Neucheck:**
+        "_/vsharp msa"_
+        - **Vetter Lexmark Neucheck:**
+        "_/vlex msa"_

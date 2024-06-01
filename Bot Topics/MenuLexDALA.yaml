@@ -1,0 +1,50 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/lex dala"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_e7VASX
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: Android Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EXyfB730_ghHlVub1TW46XwBx9TUsu5na3o7hpubZ6ytbw?e=ivIG4A
+
+              - kind: OpenUrl
+                title: Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaiAlOANiAlKkXvLZ2NKh_4BDVKkIoLVhBKvtGrPgmANdA?e=www5Eg
+
+    - kind: Question
+      id: question_wyzkAF
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_0s1vAI
+      conditions:
+        - id: conditionItem_Qjf65r
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuLexDALA.main.question_wyzkAF'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: Yh40fa
+          actionId: question_wyzkAF
+
+    - kind: BeginDialog
+      id: 5npQ4E
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

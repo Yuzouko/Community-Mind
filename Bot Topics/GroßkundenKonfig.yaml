@@ -1,0 +1,118 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_FVcmqn
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Für welchen Großkunden willst du eine Konfig aufrufen?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Vetter
+              displayName: Vetter
+
+            - id: Feinguss Blank
+              displayName: Feinguss Blank
+
+            - id: Handmann
+              displayName: Handmann
+
+            - id: Stiftung St.Elisabeth
+              displayName: Stiftung St.Elisabeth
+
+            - id: TWS
+              displayName: TWS
+
+            - id: UKU
+              displayName: UKU
+
+            - id: ZFP
+              displayName: ZFP
+
+            - id: Zieglerschen
+              displayName: Zieglerschen
+
+            - id: KSK
+              displayName: KSK
+
+    - kind: ConditionGroup
+      id: conditionGroup_3B1eI5
+      conditions:
+        - id: conditionItem_cLVHnQ
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.Vetter
+          actions:
+            - kind: SendActivity
+              id: sendActivity_1UNGd5
+              activity:
+                attachments:
+                  - kind: HeroCardTemplate
+                    buttons:
+                      - kind: OpenUrl
+                        title: Vetter Protokoll
+                        url: https://morgensternag.sharepoint.com/:x:/s/bot_doc_library/Ee50nks29HNFnXLY-dGOJFsBjzbP7DrndrCzUqiakgKIMQ?e=wvB6nA
+
+        - id: conditionItem_KCuRjm
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.'Feinguss Blank'
+
+        - id: conditionItem_6BBaFa
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.Handmann
+
+        - id: conditionItem_w8v02V
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.'Stiftung St.Elisabeth'
+
+        - id: conditionItem_Uctydo
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.TWS
+
+        - id: conditionItem_3YddKN
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.UKU
+
+        - id: conditionItem_4diTjU
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.ZFP
+
+        - id: conditionItem_siAxQw
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.Zieglerschen
+
+        - id: conditionItem_I0qyvh
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_FVcmqn'.KSK
+
+      elseActions:
+        - kind: GotoAction
+          id: CMDAac
+          actionId: question_FVcmqn
+
+    - kind: Question
+      id: question_rLWre3
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var2
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_fbdCY7
+      conditions:
+        - id: conditionItem_N1gDmj
+          condition: =Topic.Var2 = 'cr3ef_communityMind.topic.GrokundenKonfig.main.question_rLWre3'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: XOIUVJ
+          actionId: question_rLWre3
+
+    - kind: BeginDialog
+      id: 5FoHGq
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

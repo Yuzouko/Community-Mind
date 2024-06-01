@@ -1,0 +1,54 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_5GZNSp
+      activity:
+        text:
+          - Für welchen Hersteller benötigst du Firmware?
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: Kyocera
+                url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?OR=Teams%2DHL&CT=1717017762205&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDA0MTEyMjMxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FKyocera&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+              - kind: OpenUrl
+                title: Sharp
+                url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?OR=Teams%2DHL&CT=1717017762205&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDA0MTEyMjMxNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FSharp&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+    - kind: Question
+      id: question_3GAhex
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_xloKfs
+      conditions:
+        - id: conditionItem_swKaEZ
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.Firmware.main.question_3GAhex'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: 4vVIZU
+          actionId: question_3GAhex
+
+    - kind: SendActivity
+      id: sendActivity_7Lv8NB
+      activity: Vielen Dank!
+
+    - kind: BeginDialog
+      id: y9nkPI
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

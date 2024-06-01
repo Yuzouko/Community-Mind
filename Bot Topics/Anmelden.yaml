@@ -1,0 +1,19 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnSignIn
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_ypjGKL
+      conditions:
+        - id: conditionItem_7XYIIR
+          condition: =System.SignInReason = SignInReason.SignInRequired
+          actions:
+            - kind: SendActivity
+              id: sendMessage_1jHUNO
+              activity: Du musst dich anmelden um den Bot zu verwenden.
+
+    - kind: OAuthInput
+      id: gOjhZA
+      title: Anmeldung
+      text: Zum Fortfahren bitte anmelden

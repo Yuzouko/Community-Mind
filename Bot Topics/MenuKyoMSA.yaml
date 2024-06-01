@@ -1,0 +1,50 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/kyo msa"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_3M6o2V
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EdNK1exhxhdJjOCZfnPtaRcBARq2Jufhq4L3fq8Fx8CuOw?e=3Rv1iL
+
+              - kind: OpenUrl
+                title: Firmware
+                url: https://morgensternag.sharepoint.com/sites/bot_doc_library/Firmware/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware&viewpath=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FForms%2FAllItems%2Easpx&id=%2Fsites%2Fbot%5Fdoc%5Flibrary%2FFirmware%2FKyocera&viewid=8ab49d4b%2Db0f9%2D4622%2D9cf2%2D8c1c0cd79a1a
+
+    - kind: Question
+      id: question_AVMEUw
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du Fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_9Q1bfR
+      conditions:
+        - id: conditionItem_cEKoTq
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuKyoMSA.main.question_AVMEUw'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: d3C97Z
+          actionId: question_AVMEUw
+
+    - kind: BeginDialog
+      id: hSCPha
+      dialog: cr3ef_communityMind.topic.OnRedirectReset

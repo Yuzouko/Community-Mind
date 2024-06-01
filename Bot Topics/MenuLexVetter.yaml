@@ -1,0 +1,54 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnActivity
+  id: main
+  condition: =System.LastMessage.Text = "/vlex msa"
+  type: Message
+  actions:
+    - kind: SendActivity
+      id: sendActivity_2jvPzS
+      activity:
+        attachments:
+          - kind: HeroCardTemplate
+            buttons:
+              - kind: OpenUrl
+                title: MFP Protokoll
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/EaB0PfV7O5FHsCfOVmNK3R4B_HHt7HxgZrRH5mcASZyN6w?e=vWXYZj
+
+              - kind: OpenUrl
+                title: MFP Drucker
+                url: https://morgensternag.sharepoint.com/:b:/s/bot_doc_library/ETv-99b3twdPluRyuRkGCNABtuxL7jc43pH2bmtHF8v1Mw?e=gKjilm
+
+              - kind: MessageBack
+                title: Vetter Protokoll
+                text: https://morgensternag.sharepoint.com/:x:/s/bot_doc_library/EeS-hbIz1UNBsXnP8cZmDL4BgWXL_jx6G52cii2j4uYLRw?e=j8rLgc
+
+    - kind: Question
+      id: question_kCk2IP
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Bist du fertig?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Ja
+              displayName: Ja
+
+    - kind: ConditionGroup
+      id: conditionGroup_SQXW6n
+      conditions:
+        - id: conditionItem_BwqQoY
+          condition: =Topic.Var1 = 'cr3ef_communityMind.topic.MenuLexVetter.main.question_kCk2IP'.Ja
+
+      elseActions:
+        - kind: GotoAction
+          id: HxY3nL
+          actionId: question_kCk2IP
+
+    - kind: BeginDialog
+      id: 50uoUA
+      dialog: cr3ef_communityMind.topic.OnRedirectReset
